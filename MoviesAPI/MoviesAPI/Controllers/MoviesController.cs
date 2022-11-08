@@ -43,5 +43,34 @@ namespace MoviesAPI.Controllers
             return NotFound();
 
         }
+
+        [HttpPut("{id}")]
+        public IActionResult Update(int id, [FromBody]Movie updatedMovie)
+        {
+            Movie movie = _context.Movies.FirstOrDefault(movie => movie.Id == id);
+            if (movie == null)
+            {
+                return NotFound();
+            }
+            movie.Title = updatedMovie.Title;
+            movie.Category = updatedMovie.Category;
+            movie.Duration = updatedMovie.Duration;
+            movie.Director = updatedMovie.Director;
+            _context.SaveChanges();
+            return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            Movie movie = _context.Movies.FirstOrDefault(movie => movie.Id == id);
+            if (movie == null)
+            {
+                return NotFound();
+            }
+            _context.Remove(movie);
+            _context.SaveChanges();
+            return NoContent();
+        }
     }
 }
