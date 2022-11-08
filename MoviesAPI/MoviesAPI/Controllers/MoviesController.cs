@@ -13,22 +13,29 @@ namespace MoviesAPI.Controllers
 
         private static List<Movie> movies = new List<Movie>();
         [HttpPost]
-        public void Add([FromBody]Movie movie)
+        public IActionResult Add([FromBody]Movie movie)
         {
             movie.Id = id++;
             movies.Add(movie);
+            return CreatedAtAction(nameof(GetMovieById), new {Id = movie.Id}, movie);
         }
 
         [HttpGet]
-        public IEnumerable<Movie> GetMovies()
+        public IActionResult GetMovies()
         {
-            return movies;
+            return Ok(movies);
         }
 
         [HttpGet("{id}")]
-        public Movie GetMovieById(int id)
+        public IActionResult GetMovieById(int id)
         {
-            return movies.FirstOrDefault(movie => movie.Id == id);
+            Movie movie = movies.FirstOrDefault(movie => movie.Id == id);
+            if (movie != null)
+            {
+                return Ok(movie);
+            }
+            return NotFound();
+
         }
     }
 }
