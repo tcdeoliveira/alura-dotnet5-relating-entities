@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MoviesAPI.Data;
+using MoviesAPI.Data.DTO;
 using MoviesAPI.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -19,8 +21,15 @@ namespace MoviesAPI.Controllers
 
         private static List<Movie> movies = new List<Movie>();
         [HttpPost]
-        public IActionResult Add([FromBody]Movie movie)
+        public IActionResult Add([FromBody]CreateMovieDTO movieDTO)
         {
+            Movie movie = new Movie
+            {
+                Title = movieDTO.Title,
+                Category = movieDTO.Category,
+                Duration = movieDTO.Duration,
+                Director = movieDTO.Director,
+            };
             _context.Movies.Add(movie);
             _context.SaveChanges();
             return CreatedAtAction(nameof(GetMovieById), new {Id = movie.Id}, movie);
@@ -38,6 +47,15 @@ namespace MoviesAPI.Controllers
             Movie movie = _context.Movies.FirstOrDefault(movie => movie.Id == id);
             if (movie != null)
             {
+                ReadMovieDTO movieDTO = new ReadMovieDTO
+                {
+                    Title = movie.Title,
+                    Director = movie.Director,
+                    Duration = movie.Duration,
+                    Id = movie.Id,
+                    Category = movie.Category,
+                    CurrentTime = DateTime.Now
+                };
                 return Ok(movie);
             }
             return NotFound();
@@ -45,17 +63,18 @@ namespace MoviesAPI.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult Update(int id, [FromBody]Movie updatedMovie)
+        public IActionResult Update(int id, [FromBody]UpdateMovieDTO movieDTO)
         {
+            
             Movie movie = _context.Movies.FirstOrDefault(movie => movie.Id == id);
             if (movie == null)
             {
                 return NotFound();
             }
-            movie.Title = updatedMovie.Title;
-            movie.Category = updatedMovie.Category;
-            movie.Duration = updatedMovie.Duration;
-            movie.Director = updatedMovie.Director;
+            movie.Title = movieDTO.Title;
+            movie.Category = movieDTO.Category;
+            movie.Duration = movieDTO.Duration;
+            movie.Director = movieDTO.Director;
             _context.SaveChanges();
             return NoContent();
         }
