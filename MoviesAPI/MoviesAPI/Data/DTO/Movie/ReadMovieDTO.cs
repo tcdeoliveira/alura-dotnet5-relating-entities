@@ -1,9 +1,14 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
-namespace MoviesAPI.Data.DTO
+namespace MoviesAPI.Data.DTO.Movie
 {
-    public class UpdateMovieDTO
+    public class ReadMovieDTO
     {
+        [Key]
+        [Required]
+        public int Id { get; set; }
+
         [Required(ErrorMessage = "Title could not be null")]
         public string Title { get; set; }
 
@@ -13,5 +18,7 @@ namespace MoviesAPI.Data.DTO
         public string Category { get; set; }
         [Range(1, 600, ErrorMessage = "Duration Range - min 1 and max 600")]
         public int Duration { get; set; }
+
+        public DateTime CurrentTime { get; set; }
     }
 }
