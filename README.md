@@ -1,13 +1,11 @@
 ## Course link:
-https://cursos.alura.com.br/course/api-rest-net-5-operacoes-verbos-http
+https://cursos.alura.com.br/course/net-5-ef-core-relacionando-entidades
 
-##Topics 
+## Topics 
 
-* Understand what an API is
-* Learn to receive requests in your API
-* Control what information the user can send
-* Understand the main HTTP verbs
-* Connect to a database using Entity Framework Core
-* Learn how to return information to the user in a standardized way
-* Use DTOs to handle requests and responses
-* Map your system objects in an automated way with AutoMapper
+* Understand how Entity can help you relate data
+* Learn what it is and how to implement the 1:1 relationship
+* Learn what it is and how to implement the 1:n relationship
+* Learn what it is and how to implement the n:n relationship
+* Find out how to generate dependencies between your entities
+* Perform some types of queries with LINQ
