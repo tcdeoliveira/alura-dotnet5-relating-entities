@@ -24,7 +24,7 @@ namespace FilmesAPI.Controllers
         }
 
         [HttpPost]
-        public IActionResult AdicionaAddress([FromBody] CreateAddressDTO addressDTO)
+        public IActionResult AddAddress([FromBody] CreateAddressDTO addressDTO)
         {
             Address address = _mapper.Map<Address>(addressDTO);
             _context.Addresses.Add(address);
