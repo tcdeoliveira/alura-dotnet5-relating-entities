@@ -14,9 +14,9 @@ namespace MoviesAPI.Controllers
     public class MoviesController : ControllerBase
     {
         private MovieContext _context;
-        private Mapper _mapper;
+        private IMapper _mapper;
 
-        public MoviesController(MovieContext context, Mapper mapper)
+        public MoviesController(MovieContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
