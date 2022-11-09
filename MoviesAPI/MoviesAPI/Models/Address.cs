@@ -5,14 +5,15 @@ using System.Text.Json.Serialization;
 
 namespace MoviesAPI.Models
 {
-    public class Cinema
+    public class Address
     {
         [Key]
         [Required]
         public int Id { get; set; }
-        [Required(ErrorMessage = "The filed 'name' is required")]
-        public string Name { get; set; }
-        public int AddressFK { get; set; }
-        public int ManagerFK { get; set; }
+        [Required(ErrorMessage = "'Street' is required")]
+        public string Street { get; set; }
+        public int Number { get; set; }
+        public string City { get; set; }
+        public Cinema Cinema { get; set; }
     }
 }
