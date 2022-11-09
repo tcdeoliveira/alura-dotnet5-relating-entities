@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using MoviesAPI.Data;
 using MoviesAPI.Data.DTO;
 using MoviesAPI.Models;
@@ -13,23 +14,20 @@ namespace MoviesAPI.Controllers
     public class MoviesController : ControllerBase
     {
         private MovieContext _context;
+        private Mapper _mapper;
 
-        public MoviesController(MovieContext context)
+        public MoviesController(MovieContext context, Mapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         private static List<Movie> movies = new List<Movie>();
         [HttpPost]
         public IActionResult Add([FromBody]CreateMovieDTO movieDTO)
         {
-            Movie movie = new Movie
-            {
-                Title = movieDTO.Title,
-                Category = movieDTO.Category,
-                Duration = movieDTO.Duration,
-                Director = movieDTO.Director,
-            };
+            
+            Movie movie = _mapper.Map<Movie>(movieDTO);
             _context.Movies.Add(movie);
             _context.SaveChanges();
             return CreatedAtAction(nameof(GetMovieById), new {Id = movie.Id}, movie);
@@ -47,16 +45,8 @@ namespace MoviesAPI.Controllers
             Movie movie = _context.Movies.FirstOrDefault(movie => movie.Id == id);
             if (movie != null)
             {
-                ReadMovieDTO movieDTO = new ReadMovieDTO
-                {
-                    Title = movie.Title,
-                    Director = movie.Director,
-                    Duration = movie.Duration,
-                    Id = movie.Id,
-                    Category = movie.Category,
-                    CurrentTime = DateTime.Now
-                };
-                return Ok(movie);
+                ReadMovieDTO movieDTO = _mapper.Map<ReadMovieDTO>(movie);
+                return Ok(movieDTO);
             }
             return NotFound();
 
@@ -71,6 +61,7 @@ namespace MoviesAPI.Controllers
             {
                 return NotFound();
             }
+            _mapper.Map(movieDTO, movie);
             movie.Title = movieDTO.Title;
             movie.Category = movieDTO.Category;
             movie.Duration = movieDTO.Duration;
