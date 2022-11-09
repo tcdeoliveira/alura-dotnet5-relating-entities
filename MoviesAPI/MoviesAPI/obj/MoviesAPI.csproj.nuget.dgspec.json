@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\TAKETHEWIND\\C_SHARP_PROJECTS\\alura-dotnet5-rest\\MoviesAPI\\MoviesAPI\\MoviesAPI.csproj": {}
+    "C:\\TAKETHEWIND\\C_SHARP_PROJECTS\\alura-dotnet5-relating-entities\\MoviesAPI\\MoviesAPI\\MoviesAPI.csproj": {}
   },
   "projects": {
-    "C:\\TAKETHEWIND\\C_SHARP_PROJECTS\\alura-dotnet5-rest\\MoviesAPI\\MoviesAPI\\MoviesAPI.csproj": {
+    "C:\\TAKETHEWIND\\C_SHARP_PROJECTS\\alura-dotnet5-relating-entities\\MoviesAPI\\MoviesAPI\\MoviesAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\TAKETHEWIND\\C_SHARP_PROJECTS\\alura-dotnet5-rest\\MoviesAPI\\MoviesAPI\\MoviesAPI.csproj",
+        "projectUniqueName": "C:\\TAKETHEWIND\\C_SHARP_PROJECTS\\alura-dotnet5-relating-entities\\MoviesAPI\\MoviesAPI\\MoviesAPI.csproj",
         "projectName": "MoviesAPI",
-        "projectPath": "C:\\TAKETHEWIND\\C_SHARP_PROJECTS\\alura-dotnet5-rest\\MoviesAPI\\MoviesAPI\\MoviesAPI.csproj",
+        "projectPath": "C:\\TAKETHEWIND\\C_SHARP_PROJECTS\\alura-dotnet5-relating-entities\\MoviesAPI\\MoviesAPI\\MoviesAPI.csproj",
         "packagesPath": "C:\\Users\\Tiago Oliveira\\.nuget\\packages\\",
-        "outputPath": "C:\\TAKETHEWIND\\C_SHARP_PROJECTS\\alura-dotnet5-rest\\MoviesAPI\\MoviesAPI\\obj\\",
+        "outputPath": "C:\\TAKETHEWIND\\C_SHARP_PROJECTS\\alura-dotnet5-relating-entities\\MoviesAPI\\MoviesAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Tiago Oliveira\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -42,7 +42,7 @@
           "dependencies": {
             "AutoMapper.Extensions.Microsoft.DependencyInjection": {
               "target": "Package",
-              "version": "[12.0.0, )"
+              "version": "[8.1.1, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
