@@ -7,9 +7,9 @@ namespace MoviesAPI.Data.DTO
         [Key]
         [Required]
         public int Id { get; set; }
-        public string Logradouro { get; set; }
-        public string Bairro { get; set; }
-        public int Numero { get; set; }
+        public string Street { get; set; }
+        public string City { get; set; }
+        public int Number { get; set; }
 
     }
 }
